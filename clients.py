@@ -48,21 +48,15 @@ BT_CLIENTS = {
         "scrape"     : False,
         "comment"    : "stable",
     },
-    "uTorrent1.83" : {
-        "user-agent" : "uTorrent183B(14809)",
-        "prefix"     : "-UT183B-",
-        "scrape"     : False,
-        "comment"    : "deprecated",
-    },
-    "uTorrent1.61" : {
-        "user-agent" : "uTorrent/1610",
-        "peer-id"    : "-UT1610-",
-        "scrape"     : False,
-        "comment"    : "deprecated",
+    "Transmission2.93" : {
+        "user-agent" : "Transmission/2.93",
+        "prefix"    : "-TR2930-",
+        "scrape"     : True,
+        "comment"    : "new",
     },
 }
 
-DEFAULT_CLIENT = "uTorrent2.2.1"
+DEFAULT_CLIENT = "uTorrent3.0"
 
 def client_list():
     print "Supported clients:"
