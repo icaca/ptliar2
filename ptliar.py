@@ -81,6 +81,7 @@ press [Ctrl+C] for exit""" % {
 # project homepage: ptliar.com
 # email: s@ptliar.com
 
+ssl._create_default_https_context = ssl._create_unverified_context
 log = getLogger("ptliar")
 formatter = Formatter(FMT, DATEFMT)
 # delete large log file
@@ -426,7 +427,7 @@ class Torrent:
                     raise Exception("Weird scheme: %s" % scheme)
                 try:
                     conn = None
-                    conn = conn_class(domain, context = ssl._create_unverified_context(), timeout=CONNECTION_TIMEOUT)
+                    conn = conn_class(domain, timeout=CONNECTION_TIMEOUT)
                     conn.putrequest("GET", path, True, True)
                     conn.putheader("Host", domain)
                     conn.putheader("User-Agent",      ps.headers["User-Agent"])
