@@ -34,6 +34,7 @@ from utils.pretty import ptime, psize, HOUR, MIN, MEGA, KILO
 from utils.system import ptl_error, ptl_exit, interrupt_on, interrupt_off, ipv6_addr
 from utils.bt import client_key, peer_id, hex_to_byte, split_url, is_scrapable
 from utils.fs import move, remove, mkdir, join, size, ls_ext, read_int, write_int
+import ssl
 
 __author__  = "ptliar.com"
 __version__ = "v2.0.11"
@@ -425,7 +426,7 @@ class Torrent:
                     raise Exception("Weird scheme: %s" % scheme)
                 try:
                     conn = None
-                    conn = conn_class(domain, timeout=CONNECTION_TIMEOUT)
+                    conn = conn_class(domain, context = ssl._create_unverified_context(), timeout=CONNECTION_TIMEOUT)
                     conn.putrequest("GET", path, True, True)
                     conn.putheader("Host", domain)
                     conn.putheader("User-Agent",      ps.headers["User-Agent"])
